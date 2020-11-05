@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-class DuckDuckGoSearchPage():
 
+class DuckDuckGoSearchPage:
     url = 'https://www.duckduckgo.com'
 
     SEARCH_INPUT = (By.NAME, 'q')
@@ -11,7 +11,7 @@ class DuckDuckGoSearchPage():
         self.browser = browser
 
     def load(self):
-        self.browser.get(self.URL)
+        self.browser.get(self.url)
 
     def search(self, phrase):
         search_input = self.browser.find_element(*self.SEARCH_INPUT)

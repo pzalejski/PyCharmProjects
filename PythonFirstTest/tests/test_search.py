@@ -1,4 +1,4 @@
-from pages.search import  DuckDuckGoSearchPage
+from pages.search import DuckDuckGoSearchPage
 from pages.result import DuckDuckGoResultPage
 
 
