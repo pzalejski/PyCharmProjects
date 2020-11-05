@@ -13,6 +13,7 @@ def test_basic_duckduckgo_search(browser):
         And the search result links pertain to "panda"
     """
     search_page = DuckDuckGoSearchPage(browser)
+    result_page = DuckDuckGoResultPage(browser)
 
     search_page.load()
 
