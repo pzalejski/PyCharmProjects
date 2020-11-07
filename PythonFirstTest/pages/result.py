@@ -7,7 +7,7 @@ class DuckDuckGoResultPage:
 
     @classmethod
     def phrase_results(cls, phrase):
-        xpath = f"//div[@id='links'//*[contains(text(),'{phrase}']"
+        xpath = f"//div[@id='links']//*[contains(text(), '{phrase}')]"
         return By.XPATH, xpath
 
     # initializer
@@ -18,7 +18,7 @@ class DuckDuckGoResultPage:
     # interaction methods
 
     def result_count_for_phrase(self, phrase):
-        results = self.browser.find_element(*self.phrase_results(phrase))
+        results = self.browser.find_elements(*self.phrase_results(phrase))
         return len(results)
 
     def search_input_value(self):

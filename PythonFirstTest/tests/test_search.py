@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../')
+
 from pages.search import DuckDuckGoSearchPage
 from pages.result import DuckDuckGoResultPage
 
