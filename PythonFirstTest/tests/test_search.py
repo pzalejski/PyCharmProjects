@@ -23,7 +23,10 @@ def test_basic_duckduckgo_search(browser):
     search_page.search("panda")
 
     assert "panda" in result_page.title()
+    print(result_page.title())
 
     assert "panda" == result_page.search_input_value()
+    print(result_page.search_input_value())
 
     assert result_page.result_count_for_phrase("panda") > 0
+    print(result_page.result_count_for_phrase("panda"))
