@@ -19,13 +19,25 @@ class TestFetchCases(unittest.TestCase):
         except:
             print("cannot find element")
 
-    def test_first_and_last(self, driver=DRIVER):
+    def test_sign_up_fields(self, driver=DRIVER):
         try:
             driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_name").send_keys("Jane")
             driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_last_name").send_keys(
-                "Jane")
+                "Doe")
+            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_email").send_keys("janedoe@test1234.com")
+            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_email_confirm").send_keys(
+                "janedoe@test1234.com")
+            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_password").send_keys("Testing1")
         except:
             print("cannot find element")
+
+    def test_sign_up_button(self,driver = DRIVER):
+        driver.implicitly_wait(5)
+        try:
+            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/sign_up_button").click()
+        except:
+            print("Failed")
+
 
     # def tearDown(self):
     #     self.driver.quit()
@@ -34,6 +46,7 @@ class TestFetchCases(unittest.TestCase):
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(TestFetchCases("test_sign_up_with_email"))
-    suite.addTest(TestFetchCases("test_first_and_last"))
+    suite.addTest(TestFetchCases("test_sign_up_fields"))
+    suite.addTest(TestFetchCases("test_sign_up_button"))
     unittest.TestLoader().loadTestsFromTestCase(TestFetchCases)
     unittest.TextTestRunner(verbosity=2).run(suite)
