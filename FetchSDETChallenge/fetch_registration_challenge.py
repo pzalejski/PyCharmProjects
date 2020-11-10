@@ -1,5 +1,7 @@
 from appium import webdriver
 import unittest
+from email_form import first_name, last_name, email as em
+from pass_gen import pw_gen
 
 
 class TestFetchCases(unittest.TestCase):
@@ -20,24 +22,23 @@ class TestFetchCases(unittest.TestCase):
             print("cannot find element")
 
     def test_sign_up_fields(self, driver=DRIVER):
+        email = em()
         try:
-            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_name").send_keys("Jane")
-            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_last_name").send_keys(
-                "Doe")
-            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_email").send_keys("janedoe@test1234.com")
+            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_name").send_keys(first_name)
+            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_last_name").send_keys(last_name)
+            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_email").send_keys(email)
             driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_email_confirm").send_keys(
-                "janedoe@test1234.com")
-            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_password").send_keys("Testing1")
+                email)
+            driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/tiet_signup_password").send_keys(pw_gen())
         except:
-            print("cannot find element")
+            self.fail("Failed")
 
-    def test_sign_up_button(self,driver = DRIVER):
+    def test_sign_up_button(self, driver=DRIVER):
         driver.implicitly_wait(5)
         try:
             driver.find_element_by_id("com.fetchrewards.fetchrewards.hop:id/sign_up_button").click()
         except:
-            print("Failed")
-
+            self.fail("Failed")
 
     # def tearDown(self):
     #     self.driver.quit()
